@@ -13,7 +13,7 @@
 /*
 
 les choses a verifié:
-le handle de OuvrireSession est un simple handle, essaye de mettre le return de OuvrireSession dans LireDoneeAScomme le handle de OuvrireSession
+le handle de OuvrireSession est un simple handle, essaye de mettre le return de OuvrireSession dans LireDoneeAS comme le handle de OuvrireSession
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
 le type de session dans LireDonneeAS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
 essaie de mettre le type de valeur LireDonneeAS comme string
