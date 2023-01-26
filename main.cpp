@@ -98,6 +98,8 @@ int main() {
   
   HANDLE sess;
 
+  // les parametre sont
+  // (session, typeSession)
   int retOuvrireSession = OuvrireSession( sess /*parametre inconnu*/, 1 /*1 ou 2 ou 3*/);  
   std::cout << "OuvrireSession a etait appellee! valeur ret: " << retOuvrireSession << std::endl;
   system("pause");
@@ -153,7 +155,8 @@ int main() {
   std::cout << "la valeur LireDonneePS est: " << valeur << std::endl;
   system("pause");
 
-
+  // les parametre sont
+  // (session)
   int retFermerSession = FermerSession(sess /*parametre inconnu*/);
   std::cout << "FermerSession a etait appellee! valeur ret: " << retFermerSession << std::endl;
   system("pause");
