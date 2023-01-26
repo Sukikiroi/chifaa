@@ -20,7 +20,7 @@ essaie de mettre le type de valeur LireDonneeAS comme string
 
 les questions qui se posent:
 est-ce que LireDonneeAS va copier la valeur voulu vers la variable valeur ou non? oui, c'est la cas!
-quelle veleur variable "longueure" calcule?
+quelle valeur variable "longueure" dans LireDonneeAS calcule?
 
 */
 
