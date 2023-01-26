@@ -35,12 +35,13 @@ int main() {
   HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifa\\cgapxutl.dll");
   
   // verifié si la dll a etait bien importée ou non
-  if (hGetProcIDDLL == NULL) {
-    std::cout << "le dll s'est pas importee\n";
+  if (hGetProcIDDLL != NULL) {
+    std::cout << "le dll a etait importee\n";
 	system("pause");
   } else {
-    std::cout << "la dll a etait importee\n";
+    std::cout << "la dll n'a etait importee\n";
 	system("pause");
+	exit(1);
   }
 
   // session a l'air d'un integer (toujous inconnu)
@@ -54,6 +55,7 @@ int main() {
     } else {
       std::cout << "la fonction OuvrireSession ne s'est pas fait appellee!\n";
       system("pause");
+      exit(1);
     }
 
   typedef int (*LireDonnee)(int, char*, char*, int, char*);
@@ -65,6 +67,7 @@ int main() {
   } else {
     std::cout << "la fonction LireDonneeAS ne s'est pas fait appellee!\n";
 	system("pause");
+	exit(1);
   }
 
   typedef int (*LireDonneeP)(int, char*, char*, int, char*);
@@ -76,6 +79,7 @@ int main() {
   } else {
     std::cout << "la fonction LireDonneePS ne s'est pas fait appellee!\n";
 	system("pause");
+	exit(1);
   }
 
 
@@ -89,6 +93,7 @@ int main() {
   } else {
     std::cout << "la fonction FermerSession ne s'est pas fait appellee!\n";
     system("pause");
+    exit(1);
   }
   
   HANDLE sess;
@@ -133,7 +138,11 @@ int main() {
   system("pause");
   std::cout << "la valeur LireDonneeAS est: " << valeur << std::endl;
   system("pause");
-
+  
+  std::cout << "\n";
+  std::cout << "***********\n";
+  std::cout << "\n";
+  
   // La fonction LireDoneePS
   // les parametre sont
   // (session, label, valeur, longueur, typeDeSession)  
