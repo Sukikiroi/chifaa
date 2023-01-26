@@ -1,29 +1,18 @@
 /*
   version: 		0.2
   prerequis:
-  OS:			windows 7 32bit (obligatoir)
-  Libraries:		WDK (Windows Driver Kit)
+  OS:			(Windows 7 SP1) ou (Windows XP SP3) 32bit *obligatoir*
   charger:		cgapxutl.dll
-  dll:			OLEAUT32.DLL
-  			ADVAPI32.DLL
-  			USER32.DLL
-  			OLE32.DLL
-  			COMCTL32.DLL
-  			MSVCRT.DLL
-  			SHELL32.DLL
-  			CGAPXUTL.DLL
-  			WTSAPI32.DLL
-  			MSIMG32.DLL
-  			WINDOWSCODECS.DLL
-  			IMM32.DLL
-  			DWMAPI.DLL
-  			
+  dll:			WINSCARD.DLL
+  			AXUTIL.DLL
+  			AXIS2_ENGINE.DLL
+  			IDOCRYPTO.DLL
   EDI:			Visual C++ 2005 ou anterieur
 */
 
 /*
 
-les choses a verifié:
+les choses a verifiÃ©:
 le handle de OuvrireSession est un simple handle, essaye de mettre le return de OuvrireSession dans LireDoneeAScomme le handle de OuvrireSession
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
 le type de session dans LireDonneeAS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
@@ -37,7 +26,6 @@ quelle veleur variable "longueure" calcule?
 
 #include <windows.h>
 #include <iostream>
-#include <winscard.h>
 #include <cstring>
 #include <string>
 
@@ -46,7 +34,7 @@ int main() {
   // charger la dll cgapxutl.dll
   HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifa\\cgapxutl.dll");
   
-  // verifié si la dll a etait bien importée ou non
+  // verifiÃ© si la dll a etait bien importÃ©e ou non
   if (hGetProcIDDLL == NULL) {
     std::cout << "le dll s'est pas importee\n";
 	system("pause");
@@ -162,4 +150,3 @@ int main() {
   system("pause");
   return 0;
 }
-
