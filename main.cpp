@@ -1,27 +1,21 @@
 /*
-  version: 		0.2
-  prerequis:
-  OS:			(Windows 7 SP1) ou (Windows XP SP3) 32bit *obligatoir*
-  charger:		cgapxutl.dll
-  dll:			WINSCARD.DLL
+version: 		0.2
+prerequis:
+OS:			(Windows 7 SP1) ou (Windows XP SP3) 32bit *obligatoir*
+charger:		cgapxutl.DLL
+dll:			WINSCARD.DLL
   			AXUTIL.DLL
   			AXIS2_ENGINE.DLL
   			IDOCRYPTO.DLL
-  EDI:			Visual C++ 2005 ou anterieur
-*/
-
-/*
+EDI:			Visual C++ 2005 ou anterieur
 
 les choses a verifié:
-le handle de OuvrireSession est un simple handle, essaye de mettre le return de OuvrireSession dans LireDoneeAS comme le handle de OuvrireSession
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
 le type de session dans LireDonneeAS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
-essaie de mettre le type de valeur LireDonneeAS comme string
 
 les questions qui se posent:
 est-ce que LireDonneeAS va copier la valeur voulu vers la variable valeur ou non? oui, c'est la cas!
-quelle valeur variable "longueure" dans LireDonneeAS calcule?
-
+quelle valeur variable "longueure" dans LireDonneeAS calcule (le label ou la valeur elle meme) ?
 */
 
 #include <windows.h>
@@ -104,8 +98,6 @@ int main() {
   std::cout << "OuvrireSession a etait appellee! valeur ret: " << retOuvrireSession << std::endl;
   system("pause");
 
-  // appeller la fonction LireDonneeAS
-  // LireDonneeAS(session, label, valeur, longueur, type)
   // type de label
   // "CS.ADMIN.TYPE"
   // "CS.ASSURE.NUMERO"
@@ -160,5 +152,7 @@ int main() {
   int retFermerSession = FermerSession(sess /*parametre inconnu*/);
   std::cout << "FermerSession a etait appellee! valeur ret: " << retFermerSession << std::endl;
   system("pause");
+  
+  
   return 0;
 }
