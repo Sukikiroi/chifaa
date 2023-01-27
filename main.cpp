@@ -15,7 +15,7 @@ le type de session dans LireDonneeAS / mettre 1 ou 2 ou 3 / essaye de mettre les
 
 les questions qui se posent:
 est-ce que LireDonneeAS va copier la valeur voulu vers la variable "valeur" ou non? oui, c'est la cas!
-quelle valeur la variable "longueure" dans LireDonneeAS calcule (le label ou la valeur elle meme) ?
+quelle valeur le parametre "longueure" dans LireDonneeAS calcule (le label ou la valeur elle meme) ?
 */
 
 #include <windows.h>
