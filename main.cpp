@@ -12,10 +12,11 @@ option-Linker:		changer ce parametre "Configuration Properties->Linker->Advanced
 			changer ce parametre "Configuration Properties->Linker->Advanced->RBA" vers "No (/DYNAMICBASE:NO)"
 			changer ce parametre "Configuration Properties->Linker->Advanced->DEP" vers "No (/NXCOMPAT:NO)"
 option-pdb:		activer ce parametre "Tools->Options->Debugging->Symbols and select checkbox - Microsoft Symbol Servers"
+option-charset:		changer ce parametre "Configuration Properties->General->Character set->Use Multi-Byte Character Set"
 
 les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
-le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essaye de l'es mettre meme partout
+le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
 
 les questions qui se posent:
 quelle valeur le parametre "longueure" dans LireDonneeAS et LireDonneePS calcule (le label ou la "valeur output" elle meme) ?
@@ -29,16 +30,16 @@ quelle valeur le parametre "longueure" dans LireDonneeAS et LireDonneePS calcule
 int main() {
   
   // charger la dll CGAPXUTL.DLL
-  HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifaa\\cgapxutl.dll");
+  HMODULE hGetProcIDDLL = LoadLibrary("C:\\dllChifaa\\cgapxutl.dll");
   
   // verifier si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
     std::cout << "la dll cgapxutl.dll a etait importee\n";
-	system("pause");
+    system("pause");
   } else {
     std::cout << "la dll cgapxutl.dll n'a pas etait importee\n";
-	system("pause");
-	return 1;
+    system("pause");
+    return 1;
   }
 
   typedef int (*OuvrireSess)(HANDLE, int);
