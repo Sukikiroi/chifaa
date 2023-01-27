@@ -28,7 +28,7 @@ int main() {
   // charger la dll CGAPXUTL.DLL
   HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifa\\cgapxutl.dll");
   
-  // verifié si la dll a etait bien importée ou non
+  // verifier si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
     std::cout << "la dll a etait importee\n";
 	system("pause");
@@ -46,8 +46,6 @@ int main() {
       system("pause");
     } else {
       std::cout << "la fonction OuvrireSession ne s'est pas fait appellee!\n";
-      system("pause");
-      exit(1);
     }
 
   typedef int (*LireDonnee)(int, char*, char*, int, char*);
@@ -74,8 +72,6 @@ int main() {
 	exit(1);
   }
 
-
-  // le parametre de FermerSession est toujours inconnu
   typedef int (*FermerSess)(int);
   FermerSess FermerSession = (FermerSession) GetProcAddress( hGetProcIDDLL, "FermerSession");
 
@@ -90,7 +86,7 @@ int main() {
   
   HANDLE sess;
 
-  // les parametre sont
+  // les parametres sont
   // (session, typeSession)
   // type de session est soit l'entier 1 ou 2 ou 3
   int retOuvrireSession = OuvrireSession( sess /*parametre inconnu*/, 1 /*1 ou 2 ou 3*/);  
@@ -122,7 +118,7 @@ int main() {
   // "CS.ASSURANCE.POSITION"
 
   // La fonction LireDoneeAS
-  // les parametre sont
+  // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   string valeur = "0000000000000000";
   LireDonneeAS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeur, strlen(valeur), 1 /*1 ou 2 ou 3*/);
@@ -132,7 +128,7 @@ int main() {
   system("pause");
 
   // La fonction LireDoneePS
-  // les parametre sont
+  // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)  
   string valeur = "0000000000000000";
   LireDonneePS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeur, strlen(valeur), 1 /*1 ou 2 ou 3*/);
@@ -141,7 +137,7 @@ int main() {
   std::cout << "la valeur LireDonneePS est: " << valeur << std::endl;
   system("pause");
 
-  // les parametre sont
+  // les parametres sont
   // (session)
   int retFermerSession = FermerSession(sess /*parametre inconnu*/);
   std::cout << "FermerSession a etait appellee! valeur ret: " << retFermerSession << std::endl;
