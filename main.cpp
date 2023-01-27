@@ -1,7 +1,7 @@
 /*
 version: 		0.2
 prerequis:
-OS:			(Windows 7 SP1) ou (Windows XP SP3) 32bit *obligatoir*
+OS:			(Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
 charger:		CGAPXUTL.DLL
 dll:			WINSCARD.DLL
   			AXUTIL.DLL
@@ -25,7 +25,7 @@ quelle valeur la variable "longueure" dans LireDonneeAS calcule (le label ou la 
 
 int main() {
   
-  // charger la dll cgapxutl.dll
+  // charger la dll CGAPXUTL.DLL
   HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifa\\cgapxutl.dll");
   
   // verifié si la dll a etait bien importée ou non
