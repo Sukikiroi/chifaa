@@ -9,13 +9,13 @@ dll:			WINSCARD.DLL
   			IDOCRYPTO.DLL
 EDI:			Visual C++ 2005 ou anterieur
 
-les choses a verifié:
+les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
 le type de session dans LireDonneeAS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
 
 les questions qui se posent:
-est-ce que LireDonneeAS va copier la valeur voulu vers la variable valeur ou non? oui, c'est la cas!
-quelle valeur le parametre "longueure" dans LireDonneeAS calcule (le label ou la valeur elle meme) ?
+est-ce que LireDonneeAS va copier la valeur voulu vers la variable "valeur" ou non? oui, c'est la cas!
+quelle valeur la variable "longueure" dans LireDonneeAS calcule (le label ou la valeur elle meme) ?
 */
 
 #include <windows.h>
@@ -30,7 +30,7 @@ int main() {
   
   // verifié si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
-    std::cout << "le dll a etait importee\n";
+    std::cout << "la dll a etait importee\n";
 	system("pause");
   } else {
     std::cout << "la dll n'a etait importee\n";
@@ -38,8 +38,6 @@ int main() {
 	exit(1);
   }
 
-  // session a l'air d'un integer (toujous inconnu)
-  // type de session est soit l'entier 1 ou 2 ou 3
   typedef int (*OuvrireSess)(int, int);
   OuvrireSess OuvrireSession = (OuvrireSession) GetProcAddress( hGetProcIDDLL, "OuvrireSession");
 
@@ -94,6 +92,7 @@ int main() {
 
   // les parametre sont
   // (session, typeSession)
+  // type de session est soit l'entier 1 ou 2 ou 3
   int retOuvrireSession = OuvrireSession( sess /*parametre inconnu*/, 1 /*1 ou 2 ou 3*/);  
   std::cout << "OuvrireSession a etait appellee! valeur ret: " << retOuvrireSession << std::endl;
   system("pause");
@@ -132,11 +131,7 @@ int main() {
   system("pause");
   std::cout << "la valeur LireDonneeAS est: " << valeur << std::endl;
   system("pause");
-  
-  std::cout << "\n";
-  std::cout << "***********\n";
-  std::cout << "\n";
-  
+
   // La fonction LireDoneePS
   // les parametre sont
   // (session, label, valeur, longueur, typeDeSession)  
@@ -152,7 +147,6 @@ int main() {
   int retFermerSession = FermerSession(sess /*parametre inconnu*/);
   std::cout << "FermerSession a etait appellee! valeur ret: " << retFermerSession << std::endl;
   system("pause");
-  
-  
+    
   return 0;
 }
