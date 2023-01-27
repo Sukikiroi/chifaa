@@ -89,7 +89,7 @@ int main() {
   // les parametres sont
   // (session, typeSession)
   // type de session est soit l'entier 1 ou 2 ou 3
-  int retOuvrireSession = OuvrireSession( sess /*parametre inconnu*/, 1 /*1 ou 2 ou 3*/);  
+  int retOuvrireSession = OuvrireSession( sess, 1 /*1 ou 2 ou 3*/);  
   std::cout << "OuvrireSession a etait appellee! valeur ret: " << retOuvrireSession << std::endl;
   system("pause");
 
@@ -139,7 +139,7 @@ int main() {
 
   // les parametres sont
   // (session)
-  int retFermerSession = FermerSession(sess /*parametre inconnu*/);
+  int retFermerSession = FermerSession(sess);
   std::cout << "FermerSession a etait appellee! valeur ret: " << retFermerSession << std::endl;
   system("pause");
     
