@@ -121,7 +121,6 @@ int main() {
   // "CS.ASSURANCE.STATUT"
   // "CS.ASSURANCE.POSITION"
 
-
   // La fonction LireDoneeAS
   // les parametre sont
   // (session, label, valeur, longueur, typeDeSession)
