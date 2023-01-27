@@ -2,7 +2,6 @@
 version: 		0.2
 prerequis:
 OS:			(Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
-			changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
 EDI:			Visual C++ 2010 ou anterieur
 dll a charger:		CGAPXUTL.DLL
 dll:			WINSCARD.DLL
