@@ -11,7 +11,7 @@ dll:			WINSCARD.DLL
 option-Linker:		changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
 			changer ce parametre "Configuration Properties->Linker->Advanced->RBA" vers "No (/DYNAMICBASE:NO)"
 			changer ce parametre "Configuration Properties->Linker->Advanced->DEP" vers "No (/NXCOMPAT:NO)"
-option pdb:		Try go to Tools->Options->Debugging->Symbols and select checkbox "Microsoft Symbol Servers"
+option pdb:		activer ce parametre "Tools->Options->Debugging->Symbols and select checkbox - Microsoft Symbol Servers"
 
 les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
