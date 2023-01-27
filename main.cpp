@@ -2,21 +2,23 @@
 version: 		0.2
 prerequis:
 OS:			(Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
-charger:		CGAPXUTL.DLL
+			changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
+EDI:			Visual C++ 2010 ou anterieur
+dll a charger:		CGAPXUTL.DLL
 dll:			WINSCARD.DLL
   			AXUTIL.DLL
   			AXIS2_ENGINE.DLL
   			IDOCRYPTO.DLL
-EDI:			Visual C++ 2005 ou anterieur
-option-Linker:		Desactiver DEP
+option-Linker:		Desactiver l'option DEP
+			changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
+option pdb:		Try go to Tools->Options->Debugging->Symbols and select checkbox "Microsoft Symbol Servers"
 
 les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
-le type de session dans LireDonneeAS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
+le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
 
 les questions qui se posent:
-est-ce que LireDonneeAS va copier la valeur voulu vers la variable "valeur" ou non? oui, c'est la cas!
-quelle valeur le parametre "longueure" dans LireDonneeAS calcule (le label ou la valeur elle meme) ?
+quelle valeur le parametre "longueure" dans LireDonneeAS et LireDonneePS calcule (le label ou la "valeur output" elle meme) ?
 */
 
 #include <windows.h>
@@ -36,10 +38,10 @@ int main() {
   } else {
     std::cout << "la dll cgapxutl.dll n'a pas etait importee\n";
 	system("pause");
-	exit(1);
+	return 1;
   }
 
-  typedef int (*OuvrireSess)(int, int);
+  typedef int (*OuvrireSess)(HANDLE, int);
   OuvrireSess OuvrireSession = (OuvrireSess) GetProcAddress( hGetProcIDDLL, "OuvrireSession");
 
   if( OuvrireSession != NULL ) {
@@ -47,9 +49,11 @@ int main() {
       system("pause");
     } else {
       std::cout << "la fonction OuvrireSession ne s'est pas fait appellee!\n";
+      system("pause");
+      return 1;
     }
 
-  typedef int (*LireDonnee)(int, char*, std::string, int, int);
+  typedef int (*LireDonnee)(HANDLE, char*, std::string, int, int);
   LireDonnee LireDonneeAS = (LireDonnee) GetProcAddress( hGetProcIDDLL, "LireDonneeAS");
   
   if( LireDonneeAS != NULL ) {
@@ -58,10 +62,10 @@ int main() {
   } else {
     std::cout << "la fonction LireDonneeAS ne s'est pas fait appellee!\n";
 	system("pause");
-	exit(1);
+	return 1;
   }
 
-  typedef int (*LireDonneeP)(int, char*, std::string, int, int);
+  typedef int (*LireDonneeP)(HANDLE, char*, std::string, int, int);
   LireDonneeP LireDonneePS = (LireDonneeP) GetProcAddress( hGetProcIDDLL, "LireDonneePS");
   
   if( LireDonneePS != NULL ) {
@@ -70,10 +74,10 @@ int main() {
   } else {
     std::cout << "la fonction LireDonneePS ne s'est pas fait appellee!\n";
 	system("pause");
-	exit(1);
+	return 1;
   }
 
-  typedef int (*FermerSess)(int);
+  typedef int (*FermerSess)(HANDLE);
   FermerSess FermerSession = (FermerSess) GetProcAddress( hGetProcIDDLL, "FermerSession");
 
   if( FermerSession != NULL ) {
@@ -82,10 +86,10 @@ int main() {
   } else {
     std::cout << "la fonction FermerSession ne s'est pas fait appellee!\n";
     system("pause");
-    exit(1);
+    return 1;
   }
   
-  HANDLE sess;
+  HANDLE sess = NULL;
 
   // les parametres sont
   // (session, typeSession)
