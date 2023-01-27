@@ -15,7 +15,7 @@ option-pdb:		activer ce parametre "Tools->Options->Debugging->Symbols and select
 
 les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
-le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
+le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essaye de l'es mettre meme partout
 
 les questions qui se posent:
 quelle valeur le parametre "longueure" dans LireDonneeAS et LireDonneePS calcule (le label ou la "valeur output" elle meme) ?
