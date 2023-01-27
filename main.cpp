@@ -8,8 +8,9 @@ dll:			WINSCARD.DLL
   			AXUTIL.DLL
   			AXIS2_ENGINE.DLL
   			IDOCRYPTO.DLL
-option-Linker:		Desactiver l'option DEP
-			changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
+option-Linker:		changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
+			changer ce parametre "Configuration Properties->Linker->Advanced->RBA" vers "No (/DYNAMICBASE:NO)"
+			changer ce parametre "Configuration Properties->Linker->Advanced->DEP" vers "No (/NXCOMPAT:NO)"
 option pdb:		Try go to Tools->Options->Debugging->Symbols and select checkbox "Microsoft Symbol Servers"
 
 les choses a verifier:
