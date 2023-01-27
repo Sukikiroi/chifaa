@@ -1,5 +1,5 @@
 /*
-version: 		0.2
+version: 		0.7
 prerequis:
 OS:			(Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
 EDI:			Visual C++ 2010 ou anterieur
