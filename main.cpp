@@ -2,7 +2,7 @@
 version: 		0.2
 prerequis:
 OS:			(Windows 7 SP1) ou (Windows XP SP3) 32bit *obligatoir*
-charger:		cgapxutl.DLL
+charger:		CGAPXUTL.DLL
 dll:			WINSCARD.DLL
   			AXUTIL.DLL
   			AXIS2_ENGINE.DLL
