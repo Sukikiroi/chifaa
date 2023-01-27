@@ -8,6 +8,7 @@ dll:			WINSCARD.DLL
   			AXIS2_ENGINE.DLL
   			IDOCRYPTO.DLL
 EDI:			Visual C++ 2005 ou anterieur
+option-Linker:		Desactiver DEP
 
 les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
@@ -20,26 +21,26 @@ quelle valeur le parametre "longueure" dans LireDonneeAS calcule (le label ou la
 
 #include <windows.h>
 #include <iostream>
-#include <cstring>
 #include <string>
+#include <cstring>
 
 int main() {
   
   // charger la dll CGAPXUTL.DLL
-  HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifa\\cgapxutl.dll");
+  HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\dllChifaa\\cgapxutl.dll");
   
   // verifier si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
-    std::cout << "la dll a etait importee\n";
+    std::cout << "la dll cgapxutl.dll a etait importee\n";
 	system("pause");
   } else {
-    std::cout << "la dll n'a etait importee\n";
+    std::cout << "la dll cgapxutl.dll n'a pas etait importee\n";
 	system("pause");
 	exit(1);
   }
 
   typedef int (*OuvrireSess)(int, int);
-  OuvrireSess OuvrireSession = (OuvrireSession) GetProcAddress( hGetProcIDDLL, "OuvrireSession");
+  OuvrireSess OuvrireSession = (OuvrireSess) GetProcAddress( hGetProcIDDLL, "OuvrireSession");
 
   if( OuvrireSession != NULL ) {
       std::cout << "la fonction OuvrireSession s'est fait appellee!\n";
@@ -48,7 +49,7 @@ int main() {
       std::cout << "la fonction OuvrireSession ne s'est pas fait appellee!\n";
     }
 
-  typedef int (*LireDonnee)(int, char*, char*, int, char*);
+  typedef int (*LireDonnee)(int, char*, std::string, int, int);
   LireDonnee LireDonneeAS = (LireDonnee) GetProcAddress( hGetProcIDDLL, "LireDonneeAS");
   
   if( LireDonneeAS != NULL ) {
@@ -60,7 +61,7 @@ int main() {
 	exit(1);
   }
 
-  typedef int (*LireDonneeP)(int, char*, char*, int, char*);
+  typedef int (*LireDonneeP)(int, char*, std::string, int, int);
   LireDonneeP LireDonneePS = (LireDonneeP) GetProcAddress( hGetProcIDDLL, "LireDonneePS");
   
   if( LireDonneePS != NULL ) {
@@ -73,7 +74,7 @@ int main() {
   }
 
   typedef int (*FermerSess)(int);
-  FermerSess FermerSession = (FermerSession) GetProcAddress( hGetProcIDDLL, "FermerSession");
+  FermerSess FermerSession = (FermerSess) GetProcAddress( hGetProcIDDLL, "FermerSession");
 
   if( FermerSession != NULL ) {
     std::cout << "la fonction FermerSession s'est fait appellee!\n";
@@ -120,21 +121,21 @@ int main() {
   // La fonction LireDoneeAS
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
-  string valeur = "0000000000000000";
-  LireDonneeAS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeur, strlen(valeur), 1 /*1 ou 2 ou 3*/);
+  std::string valeurAS = "0000000000000000";
+  LireDonneeAS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeurAS, sizeof(valeurAS), 1 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneeAS a etait appellee!\n";
   system("pause");
-  std::cout << "la valeur LireDonneeAS est: " << valeur << std::endl;
+  std::cout << "la valeur LireDonneeAS est: " << valeurAS.c_str() << std::endl;
   system("pause");
 
   // La fonction LireDoneePS
   // les parametres sont
-  // (session, label, valeur, longueur, typeDeSession)  
-  string valeur = "0000000000000000";
-  LireDonneePS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeur, strlen(valeur), 1 /*1 ou 2 ou 3*/);
+  // (session, label, valeur, longueur, typeDeSession)
+  std::string valeurPS = "0000000000000000";
+  LireDonneePS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeurPS, sizeof(valeurPS), 1 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneePS a etait appellee!\n";
   system("pause");
-  std::cout << "la valeur LireDonneePS est: " << valeur << std::endl;
+  std::cout << "la valeur LireDonneePS est: " << valeurPS.c_str() << std::endl;
   system("pause");
 
   // les parametres sont
