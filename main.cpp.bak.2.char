@@ -30,7 +30,7 @@ le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essa
 int main() {
   
   // charger la dll CGAPXUTL.DLL
-  HMODULE hGetProcIDDLL = LoadLibrary("C:\\chifaa\\cgapxutl.dll");
+  HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\chifaa\\cgapxutl.dll");
   
   // verifier si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
@@ -130,7 +130,7 @@ int main() {
   // La fonction LireDoneeAS
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
-  char[16] valeurAS = "0000000000000000";
+  char valeurAS[16] = "000000000000000";
   LireDonneeAS(sess, "CS.ASSURE.NOMLA", valeurAS, strlen(valeurAS), 2 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneeAS a etait appellee!\n";
   system("pause");
@@ -140,7 +140,7 @@ int main() {
   // La fonction LireDoneePS
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
-  char[16] valeurPS = "0000000000000000";
+  char valeurPS[16] = "000000000000000";
   LireDonneePS(sess, "CS.ASSURE.NOMLA", valeurPS, strlen(valeurPS), 2 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneePS a etait appellee!\n";
   system("pause");
