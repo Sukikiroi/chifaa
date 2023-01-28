@@ -1,25 +1,24 @@
 /*
-version: 		0.4
+version:        0.4
 prerequis:
-OS:			(Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
-EDI:			Visual C++ 2010 ou anterieur
-dll a charger:		CGAPXUTL.DLL
-dll:			WINSCARD.DLL
-  			AXUTIL.DLL
-  			AXIS2_ENGINE.DLL
-  			IDOCRYPTO.DLL
-option-Linker:		changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
-			changer ce parametre "Configuration Properties->Linker->Advanced->RBA" vers "No (/DYNAMICBASE:NO)"
-			changer ce parametre "Configuration Properties->Linker->Advanced->DEP" vers "No (/NXCOMPAT:NO)"
-option-pdb:		activer ce parametre "Tools->Options->Debugging->Symbols and select checkbox - Microsoft Symbol Servers"
-option-charset:		changer ce parametre "Configuration Properties->General->Character set->Use Multi-Byte Character Set"
+OS:             (Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
+EDI:            Visual C++ 2010 ou anterieur
+Lib:		Windows Driver Kit (WDK) Version 7.1.0
+		Microsoft Visual C++ Redistributable (Visual Studio 2015, 2017, 2019, and 2022)
+dll a charger:	CGAPXUTL.DLL
+dll:            WINSCARD.DLL
+                AXUTIL.DLL
+                AXIS2_ENGINE.DLL
+                IDOCRYPTO.DLL
+option-Linker:	changer ce parametre "Configuration Properties->Linker->Advanced->Target Machine" vers "MachineX86 (/MACHINE:X86)"
+                changer ce parametre "Configuration Properties->Linker->Advanced->RBA" vers "No (/DYNAMICBASE:NO)"
+                changer ce parametre "Configuration Properties->Linker->Advanced->DEP" vers "No (/NXCOMPAT:NO)"
+option-pdb:     activer ce parametre "Tools->Options->Debugging->Symbols and select checkbox - Microsoft Symbol Servers"
+option-charset:	changer ce parametre "Configuration Properties->General->Character set->Use Multi-Byte Character Set"
 
 les choses a verifier:
 le type de session de OuvrireSession / mettre 1 ou 2 ou 3
 le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essaye de mettre les meme partout
-
-les questions qui se posent:
-quelle valeur le parametre "longueure" dans LireDonneeAS et LireDonneePS calcule (le label ou la "valeur output" elle meme) ?
 */
 
 #include <windows.h>
@@ -30,7 +29,7 @@ quelle valeur le parametre "longueure" dans LireDonneeAS et LireDonneePS calcule
 int main() {
   
   // charger la dll CGAPXUTL.DLL
-  HMODULE hGetProcIDDLL = LoadLibrary("C:\\dllChifaa\\cgapxutl.dll");
+  HMODULE hGetProcIDDLL = LoadLibrary("C:\\chifaa\\cgapxutl.dll");
   
   // verifier si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
@@ -127,7 +126,7 @@ int main() {
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   std::string valeurAS = "0000000000000000";
-  LireDonneeAS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeurAS, sizeof(valeurAS), 1 /*1 ou 2 ou 3*/);
+  LireDonneeAS(sess, "CS.ASSURE.NOMLA", valeurAS, sizeof(valeurAS), 1 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneeAS a etait appellee!\n";
   system("pause");
   std::cout << "la valeur LireDonneeAS est: " << valeurAS.c_str() << std::endl;
@@ -137,7 +136,7 @@ int main() {
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   std::string valeurPS = "0000000000000000";
-  LireDonneePS(sess /*parametre inconnu*/, "CS.ASSURE.NOMLA", valeurPS, sizeof(valeurPS), 1 /*1 ou 2 ou 3*/);
+  LireDonneePS(sess, "CS.ASSURE.NOMLA", valeurPS, sizeof(valeurPS), 1 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneePS a etait appellee!\n";
   system("pause");
   std::cout << "la valeur LireDonneePS est: " << valeurPS.c_str() << std::endl;
