@@ -6,8 +6,8 @@ EDI:            Visual C++ 2010 ou anterieur
 Lib:		Windows Driver Kit (WDK) Version 7.1.0
 		Microsoft Windows SDK for Windows 7 and dotNET Framework 4
 		Microsoft Visual C++ Redistributable (Visual Studio 2013, 2015, 2017, 2019, and 2022)
-dll a charger:	CGAPXUTL.DLL
-dll:            WINSCARD.DLL
+dll:		CGAPXUTL.DLL
+		WINSCARD.DLL
                 AXUTIL.DLL
                 AXIS2_ENGINE.DLL
                 IDOCRYPTO.DLL
@@ -41,7 +41,8 @@ int main() {
     system("pause");
     return 1;
   }
-
+  
+  // importer la fonction OuvrireSession
   typedef int (*OuvrireSess)(HANDLE, int);
   OuvrireSess OuvrireSession = (OuvrireSess) GetProcAddress( hGetProcIDDLL, "OuvrireSession");
 
@@ -54,6 +55,7 @@ int main() {
       return 1;
     }
 
+  // importer la fonction LireDonneeAS
   typedef int (*LireDonnee)(HANDLE, char*, std::string, int, int);
   LireDonnee LireDonneeAS = (LireDonnee) GetProcAddress( hGetProcIDDLL, "LireDonneeAS");
   
@@ -66,6 +68,7 @@ int main() {
 	return 1;
   }
 
+  // importer la fonction LireDonneePS
   typedef int (*LireDonneeP)(HANDLE, char*, std::string, int, int);
   LireDonneeP LireDonneePS = (LireDonneeP) GetProcAddress( hGetProcIDDLL, "LireDonneePS");
   
@@ -77,7 +80,8 @@ int main() {
 	system("pause");
 	return 1;
   }
-
+  
+  // importer la fonction FermerSession
   typedef int (*FermerSess)(HANDLE);
   FermerSess FermerSession = (FermerSess) GetProcAddress( hGetProcIDDLL, "FermerSession");
 
