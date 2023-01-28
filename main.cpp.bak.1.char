@@ -131,7 +131,7 @@ int main() {
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   char[16] valeurAS = "0000000000000000";
-  LireDonneeAS(sess, "CS.ASSURE.NOMLA", valeurAS, sizeof(valeurAS), 1 /*1 ou 2 ou 3*/);
+  LireDonneeAS(sess, "CS.ASSURE.NOMLA", valeurAS, strlen(valeurAS), 1 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneeAS a etait appellee!\n";
   system("pause");
   std::cout << "la valeur LireDonneeAS est: " << *valeurAS << std::endl;
@@ -141,7 +141,7 @@ int main() {
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   char[16] valeurPS = "0000000000000000";
-  LireDonneePS(sess, "CS.ASSURE.NOMLA", valeurPS, sizeof(valeurPS), 1 /*1 ou 2 ou 3*/);
+  LireDonneePS(sess, "CS.ASSURE.NOMLA", valeurPS, strlen(valeurPS), 1 /*1 ou 2 ou 3*/);
   std::cout << "LireDonneePS a etait appellee!\n";
   system("pause");
   std::cout << "la valeur LireDonneePS est: " << *valeurPS << std::endl;
