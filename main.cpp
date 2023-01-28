@@ -1,10 +1,11 @@
 /*
 version:        0.4
 prerequis:
-OS:             (Windows 7 SP1) 32bit ou (Windows XP SP3) 32bit *obligatoir*
+OS:             (Windows 7 SP1) 32bit *obligatoir*
 EDI:            Visual C++ 2010 ou anterieur
 Lib:		Windows Driver Kit (WDK) Version 7.1.0
-		Microsoft Visual C++ Redistributable (Visual Studio 2015, 2017, 2019, and 2022)
+		Microsoft Windows SDK for Windows 7 and dotNET Framework 4
+		Microsoft Visual C++ Redistributable (Visual Studio 2013, 2015, 2017, 2019, and 2022)
 dll a charger:	CGAPXUTL.DLL
 dll:            WINSCARD.DLL
                 AXUTIL.DLL
