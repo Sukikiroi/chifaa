@@ -30,7 +30,7 @@ le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essa
 int main() {
   
   // charger la dll CGAPXUTL.DLL
-  HMODULE hGetProcIDDLL = LoadLibrary("C:\\chifaa\\cgapxutl.dll");
+  HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\chifaa\\cgapxutl.dll");
   
   // verifier si la dll a etait bien importée ou non
   if (hGetProcIDDLL != NULL) {
