@@ -28,6 +28,8 @@ le type de session dans LireDonneeAS et LireDonneePS / mettre 1 ou 2 ou 3 / essa
 #include <cstring>
 
 int main() {
+	
+  int sessionType = 1;
   
   // charger la dll CGAPXUTL.DLL
   HMODULE hGetProcIDDLL = LoadLibrary(L"C:\\chifaa\\cgapxutl.dll");
@@ -99,7 +101,7 @@ int main() {
   // les parametres sont
   // (session, typeSession)
   // type de session est soit l'entier 1 ou 2 ou 3
-  int retOuvrireSession = OuvrireSession( sess, 1 /*1 ou 2 ou 3*/);  
+  int retOuvrireSession = OuvrireSession( sess, sessionType /*1 ou 2 ou 3*/);  
   std::cout << "OuvrireSession a etait appellee! valeur ret: " << retOuvrireSession << std::endl;
   system("pause");
 
@@ -131,7 +133,7 @@ int main() {
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   std::string valeurAS = "0000000000000000";
-  LireDonneeAS(sess, "CS.ASSURE.NOMLA", valeurAS, sizeof(valeurAS), 1 /*1 ou 2 ou 3*/);
+  LireDonneeAS(sess, "CS.ASSURE.NOMLA", valeurAS, sizeof(valeurAS), sessionType /*1 ou 2 ou 3*/);
   std::cout << "LireDonneeAS a etait appellee!\n";
   system("pause");
   std::cout << "la valeur LireDonneeAS est: " << valeurAS.c_str() << std::endl;
@@ -141,7 +143,7 @@ int main() {
   // les parametres sont
   // (session, label, valeur, longueur, typeDeSession)
   std::string valeurPS = "0000000000000000";
-  LireDonneePS(sess, "CS.ASSURE.NOMLA", valeurPS, sizeof(valeurPS), 1 /*1 ou 2 ou 3*/);
+  LireDonneePS(sess, "CS.ASSURE.NOMLA", valeurPS, sizeof(valeurPS), sessionType /*1 ou 2 ou 3*/);
   std::cout << "LireDonneePS a etait appellee!\n";
   system("pause");
   std::cout << "la valeur LireDonneePS est: " << valeurPS.c_str() << std::endl;
