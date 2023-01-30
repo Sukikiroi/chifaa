@@ -46,7 +46,7 @@ int main() {
   
   // importer la fonction OuvrireSession
   typedef int (*OuvrireSess)(HANDLE, int);
-  OuvrireSess OuvrireSession = (OuvrireSess) GetProcAddress( hGetProcIDDLL, "OuvrireSession");
+  OuvrireSess OuvrirSession = (OuvrireSess) GetProcAddress( hGetProcIDDLL, "OuvrirSession");
 
   if( OuvrireSession != NULL ) {
       std::cout << "la fonction OuvrireSession s'est fait appellee!\n";
@@ -101,7 +101,7 @@ int main() {
   // les parametres sont
   // (session, typeSession)
   // type de session est soit l'entier 1 ou 2 ou 3
-  int retOuvrireSession = OuvrireSession( sess, sessionType /*1 ou 2 ou 3*/);  
+  int retOuvrireSession = OuvrirSession( sess, sessionType /*1 ou 2 ou 3*/);  
   std::cout << "OuvrireSession a etait appellee! valeur ret: " << retOuvrireSession << std::endl;
   system("pause");
 
